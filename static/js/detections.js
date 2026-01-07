@@ -2,11 +2,33 @@
 
 // DOM Elements
 const refreshBtn = document.getElementById('refreshBtn');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 const detectionsTableBody = document.getElementById('detectionsTableBody');
 const detectionCount = document.getElementById('detectionCount');
 
 // Event Listeners
 refreshBtn.addEventListener('click', loadDetections);
+clearHistoryBtn.addEventListener('click', clearHistory);
+
+/**
+ * Clear detection history
+ */
+async function clearHistory() {
+    if (!confirm('Are you sure you want to clear all detection history? This cannot be undone.')) {
+        return;
+    }
+
+    try {
+        const data = await apiRequest('/api/detections/clear', { method: 'POST' });
+
+        if (data.success) {
+            showToast('History cleared successfully', 'success');
+            loadDetections();
+        }
+    } catch (error) {
+        showToast(`Failed to clear history: ${error.message}`, 'error');
+    }
+}
 
 /**
  * Load detection history

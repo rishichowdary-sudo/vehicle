@@ -13,7 +13,7 @@ from models.database import Database
 import config
 
 def verify_image():
-    image_path = r"C:/Users/Rishichowdary-3925/.gemini/antigravity/brain/5f93a786-8322-4909-95b2-3d08722f65cd/uploaded_image_1767766296204.jpg"
+    image_path = r"C:\Users\Rishichowdary-3925\Downloads\rqandom.jpg"
     
     if not os.path.exists(image_path):
         print(f"Error: Image not found at {image_path}")

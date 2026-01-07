@@ -94,15 +94,31 @@ class PlateOCR:
                 return {'text': '', 'confidence': 0.0, 'raw_results': results}
 
             # Combine text (plates might be multi-line or split)
-            full_text = ' '.join(detected_texts)
-            avg_confidence = np.mean(confidences) if confidences else 0.0
+            # Filter out low-confidence detections (noise removal)
+            final_texts = []
+            final_scores = []
+            
+            for t, s in zip(detected_texts, confidences):
+                if s > 0.60:  # Minimum confidence threshold for character chunks
+                    final_texts.append(t)
+                    final_scores.append(s)
+            
+            if not final_texts:
+                 # If everything was low confidence, fall back to the highest one (unsafe but better than empty)
+                 if detected_texts:
+                     max_idx = confidences.index(max(confidences))
+                     final_texts.append(detected_texts[max_idx])
+                     final_scores.append(confidences[max_idx])
+            
+            text = " ".join(final_texts)
+            confidence = sum(final_scores) / len(final_scores) if final_scores else 0.0
 
             # Minimal cleaning: remove non-alphanumeric (but keep the raw read mostly)
-            cleaned_text = self.clean_plate_text(full_text)
+            cleaned_text = self.clean_plate_text(text)
 
             return {
                 'text': cleaned_text,
-                'confidence': float(avg_confidence),
+                'confidence': float(confidence),
                 'raw_results': results
             }
             

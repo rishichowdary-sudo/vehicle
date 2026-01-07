@@ -254,6 +254,18 @@ def get_detections():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/detections/clear', methods=['POST'])
+def clear_history():
+    """Clear all detection history."""
+    try:
+        if db.clear_detections():
+            return jsonify({'success': True, 'message': 'History cleared successfully'})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to clear history'}), 500
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 # ==================== STATIC FILES ====================
 
 @app.route('/uploads/<filename>')

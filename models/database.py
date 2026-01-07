@@ -245,6 +245,24 @@ class Database:
 
         except Exception as e:
             print(f"Error logging detection: {e}")
+    def clear_detections(self):
+        """Clear all detection logs from the database.
+
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+
+            cursor.execute('DELETE FROM detections')
+
+            conn.commit()
+            conn.close()
+            return True
+
+        except Exception as e:
+            print(f"Error clearing detections: {e}")
             return False
 
     def get_recent_detections(self, limit=50):
