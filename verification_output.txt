@@ -1,4 +1,4 @@
-Processing image: C:\Users\Rishichowdary-3925\Downloads\images.jpg
+Processing image: C:\Users\Rishichowdary-3925\Downloads\bg.jpg
 Initializing services...
 Initializing Vehicle Service...
 Loading plate detector...
@@ -8,43 +8,73 @@ Initializing PaddleOCR reader...
 PaddleOCR reader initialized successfully
 Vehicle Service initialized successfully!
 Running detection...
-DEBUG: OCR Raw Results: [{'input_path': None, 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'input_img': array([[[134, ..., 158],
+DEBUG: OCR Raw Results: [{'input_path': None, 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'input_img': array([[[121, ...,  30],
         ...,
-        [176, ..., 171]],
+        [108, ...,  67]],
 
        ...,
 
-       [[106, ..., 116],
+       [[182, ..., 183],
         ...,
-        [119, ..., 109]]], dtype=uint8), 'model_settings': {'use_doc_orientation_classify': True, 'use_doc_unwarping': True}, 'angle': 0, 'rot_img': array([[[134, ..., 158],
+        [177, ..., 206]]], dtype=uint8), 'model_settings': {'use_doc_orientation_classify': True, 'use_doc_unwarping': True}, 'angle': 180, 'rot_img': array([[[  0, ...,   0],
         ...,
-        [176, ..., 171]],
+        [  0, ...,   0]],
 
        ...,
 
-       [[106, ..., 116],
+       [[  0, ...,   0],
         ...,
-        [119, ..., 109]]], dtype=uint8), 'output_img': array([[[100, ..., 109],
+        [106, ...,  22]]], dtype=uint8), 'output_img': array([[[177, ..., 211],
         ...,
-        [221, ..., 224]],
+        [210, ..., 221]],
 
        ...,
 
-       [[110, ..., 112],
+       [[126, ...,  79],
         ...,
-        [141, ..., 130]]], dtype=uint8)}, 'dt_polys': [array([[20, 13],
+        [ 48, ...,  13]]], dtype=uint8)}, 'dt_polys': [array([[18,  4],
        ...,
-       [20, 33]], dtype=int16)], 'model_settings': {'use_doc_preprocessor': True, 'use_textline_orientation': False}, 'text_det_params': {'limit_side_len': 64, 'limit_type': 'min', 'thresh': 0.3, 'max_side_limit': 4000, 'box_thresh': 0.6, 'unclip_ratio': 1.5}, 'text_type': 'general', 'text_rec_score_thresh': 0.0, 'return_word_box': False, 'rec_texts': ['MP O4 CC 2688'], 'rec_scores': [0.9717784523963928], 'rec_polys': [array([[20, 13],
+       [18, 22]], dtype=int16)], 'model_settings': {'use_doc_preprocessor': True, 'use_textline_orientation': True}, 'text_det_params': {'limit_side_len': 64, 'limit_type': 'min', 'thresh': 0.3, 'max_side_limit': 4000, 'box_thresh': 0.6, 'unclip_ratio': 1.5}, 'text_type': 'general', 'text_rec_score_thresh': 0.0, 'return_word_box': False, 'rec_texts': ['NLC9CE L1E'], 'rec_scores': [0.3451475501060486], 'rec_polys': [array([[18,  4],
        ...,
-       [20, 33]], dtype=int16)], 'vis_fonts': [<paddlex.utils.fonts.Font object at 0x000001B3D7AF9430>], 'textline_orientation_angles': [-1], 'rec_boxes': array([[20, ..., 38]], dtype=int16)}]
+       [18, 22]], dtype=int16)], 'vis_fonts': [<paddlex.utils.fonts.Font object at 0x000001B832739850>], 'textline_orientation_angles': [0], 'rec_boxes': array([[18, ..., 25]], dtype=int16)}]
+Low confidence (0.35). Trying enhancements...
+DEBUG: OCR Raw Results: [{'input_path': None, 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'input_img': array([[[123, ...,  31],
+        ...,
+        [107, ...,  67]],
+
+       ...,
+
+       [[178, ..., 179],
+        ...,
+        [179, ..., 207]]], dtype=uint8), 'model_settings': {'use_doc_orientation_classify': True, 'use_doc_unwarping': True}, 'angle': 180, 'rot_img': array([[[  0, ...,   0],
+        ...,
+        [  0, ...,   0]],
+
+       ...,
+
+       [[  0, ...,   0],
+        ...,
+        [118, ...,  28]]], dtype=uint8), 'output_img': array([[[182, ..., 217],
+        ...,
+        [228, ..., 240]],
+
+       ...,
+
+       [[130, ...,  75],
+        ...,
+        [ 44, ...,  16]]], dtype=uint8)}, 'dt_polys': [array([[30,  8],
+       ...,
+       [29, 45]], dtype=int16)], 'model_settings': {'use_doc_preprocessor': True, 'use_textline_orientation': True}, 'text_det_params': {'limit_side_len': 64, 'limit_type': 'min', 'thresh': 0.3, 'max_side_limit': 4000, 'box_thresh': 0.6, 'unclip_ratio': 1.5}, 'text_type': 'general', 'text_rec_score_thresh': 0.0, 'return_word_box': False, 'rec_texts': ['KL7 CE 6616'], 'rec_scores': [0.9877368807792664], 'rec_polys': [array([[30,  8],
+       ...,
+       [29, 45]], dtype=int16)], 'vis_fonts': [<paddlex.utils.fonts.Font object at 0x000001B832739850>], 'textline_orientation_angles': [1], 'rec_boxes': array([[29, ..., 49]], dtype=int16)}]
 
 ==================================================
 DETECTION RESULTS
 ==================================================
 Detection 1:
-  Plate Number: MP04CC2688
-  OCR Confidence: 0.97
-  Detection Confidence: 0.77
+  Plate Number: KL7CE6616
+  OCR Confidence: 0.99
+  Detection Confidence: 0.75
   Registered: False
 ==================================================
 

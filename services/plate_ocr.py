@@ -18,8 +18,8 @@ class PlateOCR:
         """
         print("Initializing PaddleOCR reader...")
         # PaddleOCR handles model downloads automatically
-        # Disabled angle classifier to prevent errors and improve speed
-        self.reader = PaddleOCR(use_angle_cls=False, lang='en')
+        # Enabled angle classifier to handle rotated images (e.g., ver.jpeg)
+        self.reader = PaddleOCR(use_angle_cls=True, lang='en')
         print("PaddleOCR reader initialized successfully")
 
     def preprocess_plate(self, plate_image):
@@ -110,6 +110,15 @@ class PlateOCR:
                      final_texts.append(detected_texts[max_idx])
                      final_scores.append(confidences[max_idx])
             
+            # Sort text blocks: Heuristic - State code (Letters) usually comes first
+            # If we have multiple blocks, try to put the one starting with letters first
+            if len(final_texts) > 1:
+                # Check if the first block starts with digits and second with letters
+                if final_texts[0][0].isdigit() and final_texts[1][0].isalpha():
+                     # Swap
+                     final_texts[0], final_texts[1] = final_texts[1], final_texts[0]
+                     final_scores[0], final_scores[1] = final_scores[1], final_scores[0]
+            
             text = " ".join(final_texts)
             confidence = sum(final_scores) / len(final_scores) if final_scores else 0.0
 
@@ -134,6 +143,12 @@ class PlateOCR:
         # This isn't a "safety net" logic (pattern matching), just standard string cleanup
         import re
         text = re.sub(r'[^A-Z0-9]', '', text)
+
+        # Fix invalid state codes common in OCR errors
+        # MA is not a valid state code, but KA (Karnataka) is. MH (Maharashtra) is.
+        # Given user feedback, MA -> KA is a likely correction.
+        if text.startswith('MA'):
+            text = 'KA' + text[2:]
 
         # Smart heuristic for Indian Plates (LL DD LL DDDD)
         # Fix common OCR confusion (O -> 0, Q -> 0, Z -> 2, etc.) in expected digit positions
@@ -183,7 +198,61 @@ class PlateOCR:
         return results
 
     def read_with_fallback(self, plate_image):
-        """For Paddle, fallback is less necessary, but keeping method sig."""
-        # Just call read_plate directly
-        return self.read_plate(plate_image)
+        """Read text with robust fallback strategies for difficult images."""
+        
+        # 1. Try raw image first
+        result = self.read_plate(plate_image)
+        if result['confidence'] > 0.8:
+            return result
+            
+        print(f"Low confidence ({result['confidence']:.2f}). Trying enhancements...")
+        candidates = [result]
+        
+        # 2. Try Scaled Up (2x) - Helps with small/pixelated text
+        try:
+            h, w = plate_image.shape[:2]
+            scaled = cv2.resize(plate_image, (w*2, h*2), interpolation=cv2.INTER_CUBIC)
+            res_scaled = self.read_plate(scaled)
+            candidates.append(res_scaled)
+            if res_scaled['confidence'] > 0.85:
+                return res_scaled
+        except Exception as e:
+            print(f"Scaling error: {e}")
+
+        # 3. Try Contrast Enhancement (CLAHE) - Helps with lighting/shadows
+        try:
+            # Convert to LAB color space
+            lab = cv2.cvtColor(plate_image, cv2.COLOR_BGR2LAB)
+            l, a, b = cv2.split(lab)
+            
+            # Apply CLAHE to L-channel
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+            cl = clahe.apply(l)
+            
+            # Merge and convert back
+            limg = cv2.merge((cl,a,b))
+            enhanced = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
+            
+            res_enhanced = self.read_plate(enhanced)
+            candidates.append(res_enhanced)
+        except Exception as e:
+            print(f"Enhancement error: {e}")
+
+        # 4. Try Grayscale + Thresholding (Binary) - Helps with color noise
+        try:
+            gray = cv2.cvtColor(plate_image, cv2.COLOR_BGR2GRAY)
+            # Otsu's thresholding
+            _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            # Convert back to BGR for Paddle
+            binary_bgr = cv2.cvtColor(binary, cv2.COLOR_GRAY2BGR)
+            
+            res_binary = self.read_plate(binary_bgr)
+            candidates.append(res_binary)
+        except Exception as e:
+            print(f"Binary error: {e}")
+
+        # Select best result
+        best_candidate = max(candidates, key=lambda x: x['confidence'])
+        print(f"Best confidence after fallback: {best_candidate['confidence']:.2f}")
+        return best_candidate
 

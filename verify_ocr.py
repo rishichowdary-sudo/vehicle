@@ -13,7 +13,7 @@ from models.database import Database
 import config
 
 def verify_image():
-    image_path = r"C:\Users\Rishichowdary-3925\Downloads\images.jpg"
+    image_path = r"C:\Users\Rishichowdary-3925\Downloads\bg.jpg"
     
     if not os.path.exists(image_path):
         print(f"Error: Image not found at {image_path}")
