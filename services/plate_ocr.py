@@ -134,6 +134,44 @@ class PlateOCR:
         # This isn't a "safety net" logic (pattern matching), just standard string cleanup
         import re
         text = re.sub(r'[^A-Z0-9]', '', text)
+
+        # Smart heuristic for Indian Plates (LL DD LL DDDD)
+        # Fix common OCR confusion (O -> 0, Q -> 0, Z -> 2, etc.) in expected digit positions
+        
+        if len(text) >= 4:
+            # Convert string to list for mutability
+            chars = list(text)
+
+            # Heuristic 1: 3rd and 4th characters are usually digits (District Code)
+            # Example: MP O4 -> MP 04
+            if chars[0].isalpha() and chars[1].isalpha():
+                for i in [2, 3]:
+                    if i < len(chars):
+                        if chars[i] in ['O', 'Q', 'D']:
+                            chars[i] = '0'
+                        elif chars[i] == 'Z':
+                            chars[i] = '2'
+                        elif chars[i] == 'S':
+                            chars[i] = '5'
+                        elif chars[i] == 'B':
+                            chars[i] = '8'
+
+            # Heuristic 2: Last 4 characters are usually digits
+            # Example: ... CC Z688 -> ... CC 2688
+            if len(chars) > 4:
+                suffix_start = max(4, len(chars) - 4)
+                for i in range(suffix_start, len(chars)):
+                    if chars[i] in ['O', 'Q', 'D']:
+                        chars[i] = '0'
+                    elif chars[i] == 'Z':
+                        chars[i] = '2'
+                    elif chars[i] == 'S':
+                        chars[i] = '5'
+                    elif chars[i] == 'B':
+                        chars[i] = '8'
+            
+            text = "".join(chars)
+
         return text
 
     def read_multiple_plates(self, plate_images):
