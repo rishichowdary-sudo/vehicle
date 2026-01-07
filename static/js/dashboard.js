@@ -15,6 +15,7 @@ const noResults = document.getElementById('noResults');
 const detectionResults = document.getElementById('detectionResults');
 const registrationForm = document.getElementById('registrationForm');
 const quickRegisterForm = document.getElementById('quickRegisterForm');
+const cancelRegisterBtn = document.getElementById('cancelRegisterBtn');
 
 // Event Listeners
 uploadBtn.addEventListener('click', () => imageInput.click());
@@ -23,6 +24,10 @@ uploadArea.addEventListener('click', () => imageInput.click());
 detectBtn.addEventListener('click', detectPlate);
 clearBtn.addEventListener('click', clearImage);
 quickRegisterForm.addEventListener('submit', handleQuickRegister);
+
+if (cancelRegisterBtn) {
+    cancelRegisterBtn.addEventListener('click', cancelRegistration);
+}
 
 // Drag and drop
 uploadArea.addEventListener('dragover', (e) => {
@@ -197,15 +202,15 @@ function displayResults(data) {
                 </div>
                 ` : ''}
             ` : ''}
+            
+            ${!isRegistered && plateNumber !== 'Unknown' ? `
+                <button class="btn btn-sm btn-outline-primary" onclick="populateRegistration('${plateNumber}')" style="margin-top: 10px; width: 100%;">
+                    Register This Vehicle
+                </button>
+            ` : ''}
         `;
 
         detectionResults.appendChild(resultDiv);
-
-        // Show registration form for unregistered plates
-        if (!isRegistered && plateNumber !== 'Unknown') {
-            registrationForm.style.display = 'block';
-            document.getElementById('plateNumber').value = plateNumber;
-        }
     });
 }
 
@@ -262,7 +267,7 @@ async function handleQuickRegister(e) {
             }
         }
     } catch (error) {
-        showToast(`Registration failed: ${error.message}`, 'error');
+        showToast(`Registration failed: ${error.message} `, 'error');
     }
 }
 
@@ -283,3 +288,21 @@ async function updateStats() {
 
 // Initial load
 updateStats();
+
+/**
+ * Populate registration form with specific plate
+ * Called from manual "Register" buttons
+ */
+function populateRegistration(plateNumber) {
+    registrationForm.style.display = 'block';
+    document.getElementById('plateNumber').value = plateNumber;
+    registrationForm.scrollIntoView({ behavior: 'smooth' });
+}
+
+/**
+ * Cancel registration and hide form
+ */
+function cancelRegistration() {
+    registrationForm.style.display = 'none';
+    quickRegisterForm.reset();
+}
