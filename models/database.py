@@ -68,9 +68,9 @@ class Database:
             cursor = conn.cursor()
 
             cursor.execute('''
-                INSERT INTO vehicles (plate_number, owner_name, vehicle_type, color, model)
-                VALUES (?, ?, ?, ?, ?)
-            ''', (plate_number.upper(), owner_name, vehicle_type, color, model))
+                INSERT INTO vehicles (plate_number, owner_name, vehicle_type, color, model, created_at)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (plate_number.upper(), owner_name, vehicle_type, color, model, datetime.now()))
 
             conn.commit()
             conn.close()
@@ -235,9 +235,9 @@ class Database:
             cursor = conn.cursor()
 
             cursor.execute('''
-                INSERT INTO detections (plate_number, confidence, image_path, status)
-                VALUES (?, ?, ?, ?)
-            ''', (plate_number.upper(), confidence, image_path, status))
+                INSERT INTO detections (plate_number, confidence, image_path, status, detected_at)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (plate_number.upper(), confidence, image_path, status, datetime.now()))
 
             conn.commit()
             conn.close()

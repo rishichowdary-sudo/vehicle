@@ -4,7 +4,8 @@
 DATABASE_PATH = 'vehicle_registry.db'
 
 # YOLO Model settings
-YOLO_MODEL_PATH = None  # Uses default YOLOv8n model
+# YOLO Model settings
+YOLO_MODEL_PATH = 'license_plate_detector.pt'  # Custom license plate detector
 
 # Detection confidence threshold (0.0 - 1.0)
 DETECTION_CONFIDENCE = 0.3

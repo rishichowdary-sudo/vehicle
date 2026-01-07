@@ -1,0 +1,94 @@
+Processing image: C:/Users/Rishichowdary-3925/.gemini/antigravity/brain/5f93a786-8322-4909-95b2-3d08722f65cd/uploaded_image_1767766296204.jpg
+Initializing services...
+Initializing Vehicle Service...
+Loading plate detector...
+PlateDetector initialized with confidence threshold: 0.3
+Loading OCR engine...
+Initializing PaddleOCR reader...
+PaddleOCR reader initialized successfully
+Vehicle Service initialized successfully!
+Running detection...
+DEBUG: OCR Raw Results: [{'input_path': None, 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'input_img': array([[[208, ..., 182],
+        ...,
+        [127, ..., 134]],
+
+       ...,
+
+       [[167, ..., 141],
+        ...,
+        [ 21, ...,  19]]], dtype=uint8), 'model_settings': {'use_doc_orientation_classify': True, 'use_doc_unwarping': True}, 'angle': 0, 'rot_img': array([[[208, ..., 182],
+        ...,
+        [127, ..., 134]],
+
+       ...,
+
+       [[167, ..., 141],
+        ...,
+        [ 21, ...,  19]]], dtype=uint8), 'output_img': array([[[ 78, ...,  77],
+        ...,
+        [234, ..., 236]],
+
+       ...,
+
+       [[249, ..., 236],
+        ...,
+        [ 47, ...,  57]]], dtype=uint8)}, 'dt_polys': [array([[16, 13],
+       ...,
+       [17, 26]], dtype=int16), array([[ 8, 27],
+       ...,
+       [10, 42]], dtype=int16)], 'model_settings': {'use_doc_preprocessor': True, 'use_textline_orientation': False}, 'text_det_params': {'limit_side_len': 64, 'limit_type': 'min', 'thresh': 0.3, 'max_side_limit': 4000, 'box_thresh': 0.6, 'unclip_ratio': 1.5}, 'text_type': 'general', 'text_rec_score_thresh': 0.0, 'return_word_box': False, 'rec_texts': ['TN-13', 'H-3516'], 'rec_scores': [0.9995372891426086, 0.9988775849342346], 'rec_polys': [array([[16, 13],
+       ...,
+       [17, 26]], dtype=int16), array([[ 8, 27],
+       ...,
+       [10, 42]], dtype=int16)], 'vis_fonts': [<paddlex.utils.fonts.Font object at 0x000001A1DAEC1610>, <paddlex.utils.fonts.Font object at 0x000001A1DAEC1610>], 'textline_orientation_angles': [-1, -1], 'rec_boxes': array([[16, ..., 26],
+       [ 8, ..., 42]], dtype=int16)}]
+DEBUG: OCR Raw Results: [{'input_path': None, 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'input_img': array([[[ 32, ...,  28],
+        ...,
+        [190, ..., 170]],
+
+       ...,
+
+       [[141, ..., 132],
+        ...,
+        [164, ..., 160]]], dtype=uint8), 'model_settings': {'use_doc_orientation_classify': True, 'use_doc_unwarping': True}, 'angle': 0, 'rot_img': array([[[ 32, ...,  28],
+        ...,
+        [190, ..., 170]],
+
+       ...,
+
+       [[141, ..., 132],
+        ...,
+        [164, ..., 160]]], dtype=uint8), 'output_img': array([[[ 88, ...,  64],
+        ...,
+        [178, ..., 164]],
+
+       ...,
+
+       [[ 80, ...,  76],
+        ...,
+        [142, ..., 139]]], dtype=uint8)}, 'dt_polys': [array([[ 5, 14],
+       ...,
+       [ 7, 25]], dtype=int16), array([[ 9, 24],
+       ...,
+       [13, 36]], dtype=int16)], 'model_settings': {'use_doc_preprocessor': True, 'use_textline_orientation': False}, 'text_det_params': {'limit_side_len': 64, 'limit_type': 'min', 'thresh': 0.3, 'max_side_limit': 4000, 'box_thresh': 0.6, 'unclip_ratio': 1.5}, 'text_type': 'general', 'text_rec_score_thresh': 0.0, 'return_word_box': False, 'rec_texts': ['-TN-13', 'H-3524'], 'rec_scores': [0.8653958439826965, 0.9889276027679443], 'rec_polys': [array([[ 5, 14],
+       ...,
+       [ 7, 25]], dtype=int16), array([[ 9, 24],
+       ...,
+       [13, 36]], dtype=int16)], 'vis_fonts': [<paddlex.utils.fonts.Font object at 0x000001A1DAEC1610>, <paddlex.utils.fonts.Font object at 0x000001A1DAEC1610>], 'textline_orientation_angles': [-1, -1], 'rec_boxes': array([[ 5, ..., 25],
+       [ 9, ..., 36]], dtype=int16)}]
+
+==================================================
+DETECTION RESULTS
+==================================================
+Detection 1:
+  Plate Number: TN13H3516
+  OCR Confidence: 1.00
+  Detection Confidence: 0.76
+  Registered: False
+Detection 2:
+  Plate Number: TN13H3524
+  OCR Confidence: 0.93
+  Detection Confidence: 0.67
+  Registered: False
+==================================================
+

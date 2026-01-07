@@ -60,6 +60,21 @@ class PlateDetector:
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 confidence = float(box.conf[0])
 
+                # Add padding to the bounding box (Asymmetric expansion)
+                # 20% Horizontal: ensure full plate width is captured
+                # 5% Vertical: minimize vertical noise (branding/text above plate)
+                h_img, w_img = image.shape[:2]
+                box_w = x2 - x1
+                box_h = y2 - y1
+                
+                pad_x = int(box_w * 0.2)
+                pad_y = int(box_h * 0.05)
+
+                x1 = max(0, x1 - pad_x)
+                y1 = max(0, y1 - pad_y)
+                x2 = min(w_img, x2 + pad_x)
+                y2 = min(h_img, y2 + pad_y)
+
                 # Crop the plate region
                 plate_image = image[y1:y2, x1:x2]
 

@@ -9,9 +9,13 @@
 # ============================================
 
 # Computer Vision & Image Processing
-opencv-python>=4.10.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+flask>=2.3.0
+paddlepaddle
+paddleocr
+# easyocr (replaced by paddleocr)
 Pillow>=10.1.0
-numpy>=1.26.0,<2.0.0
 
 # YOLOv8 for License Plate Detection
 ultralytics>=8.0.0
