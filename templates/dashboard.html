@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Detection Dashboard - Vehicle Plate Detection{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+                <h3 id="total-vehicles">{{ stats.total_vehicles }}</h3>
+                <p>Registered Vehicles</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🔍</div>
+            <div class="stat-info">
+                <h3 id="recent-detections">{{ stats.recent_detections }}</h3>
+                <p>Recent Detections</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Left Panel - Image Upload & Display -->
+        <div class="panel">
+            <h2>Upload Vehicle Image</h2>
+
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <div class="upload-placeholder" id="uploadPlaceholder">
+                    <div class="upload-icon">📷</div>
+                    <p>Click to upload or drag & drop</p>
+                    <p class="upload-hint">Supports: JPG, PNG, BMP</p>
+                </div>
+                <img id="previewImage" style="display: none; max-width: 100%; border-radius: 8px;">
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" id="uploadBtn">
+                    <span>📁</span> Choose Image
+                </button>
+                <button class="btn btn-success" id="detectBtn" disabled>
+                    <span>🔍</span> Detect Plate
+                </button>
+                <button class="btn btn-secondary" id="clearBtn" disabled>
+                    <span>🗑️</span> Clear
+                </button>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing image...</p>
+            </div>
+        </div>
+
+        <!-- Right Panel - Results & Registration -->
+        <div class="panel">
+            <h2>Detection Results</h2>
+
+            <div class="results-container" id="resultsContainer">
+                <div class="no-results" id="noResults">
+                    <p>Upload an image and click "Detect Plate" to see results</p>
+                </div>
+
+                <div id="detectionResults" style="display: none;">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quick Registration Form -->
+            <div class="registration-form" id="registrationForm" style="display: none;">
+                <h3>Quick Registration</h3>
+                <form id="quickRegisterForm">
+                    <div class="form-group">
+                        <label for="plateNumber">Plate Number *</label>
+                        <input type="text" id="plateNumber" name="plate_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerName">Owner Name *</label>
+                        <input type="text" id="ownerName" name="owner_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleType">Vehicle Type</label>
+                        <input type="text" id="vehicleType" name="vehicle_type" placeholder="Car, SUV, Truck...">
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="text" id="color" name="color">
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Model</label>
+                        <input type="text" id="model" name="model">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">
+                        <span>✓</span> Register Vehicle
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

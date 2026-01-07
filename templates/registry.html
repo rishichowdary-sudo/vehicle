@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Vehicle Registry - Vehicle Plate Detection{% endblock %}
+
+{% block content %}
+<div class="registry">
+    <div class="registry-header">
+        <h2>Vehicle Registry</h2>
+        <div class="header-actions">
+            <input type="text" id="searchInput" placeholder="🔍 Search by plate or owner..." class="search-input">
+            <button class="btn btn-primary" id="addVehicleBtn">
+                <span>+</span> Add Vehicle
+            </button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="vehicles-table">
+            <thead>
+                <tr>
+                    <th>Plate Number</th>
+                    <th>Owner Name</th>
+                    <th>Type</th>
+                    <th>Color</th>
+                    <th>Model</th>
+                    <th>Registered</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="vehiclesTableBody">
+                {% for vehicle in vehicles %}
+                <tr data-plate="{{ vehicle.plate_number }}">
+                    <td><strong>{{ vehicle.plate_number }}</strong></td>
+                    <td>{{ vehicle.owner_name }}</td>
+                    <td>{{ vehicle.vehicle_type or '-' }}</td>
+                    <td>{{ vehicle.color or '-' }}</td>
+                    <td>{{ vehicle.model or '-' }}</td>
+                    <td>{{ vehicle.created_at }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger delete-btn" data-plate="{{ vehicle.plate_number }}">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="registry-footer">
+        <p id="vehicleCount">Total: {{ vehicles|length }} vehicle(s)</p>
+    </div>
+</div>
+
+<!-- Add Vehicle Modal -->
+<div class="modal" id="addVehicleModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Vehicle</h3>
+            <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+        <form id="addVehicleForm">
+            <div class="form-group">
+                <label for="newPlateNumber">Plate Number *</label>
+                <input type="text" id="newPlateNumber" name="plate_number" required>
+            </div>
+            <div class="form-group">
+                <label for="newOwnerName">Owner Name *</label>
+                <input type="text" id="newOwnerName" name="owner_name" required>
+            </div>
+            <div class="form-group">
+                <label for="newVehicleType">Vehicle Type</label>
+                <input type="text" id="newVehicleType" name="vehicle_type" placeholder="Car, SUV, Truck...">
+            </div>
+            <div class="form-group">
+                <label for="newColor">Color</label>
+                <input type="text" id="newColor" name="color">
+            </div>
+            <div class="form-group">
+                <label for="newModel">Model</label>
+                <input type="text" id="newModel" name="model">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Vehicle</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/registry.js') }}"></script>
+{% endblock %}

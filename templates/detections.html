@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Detection History - Vehicle Plate Detection{% endblock %}
+
+{% block content %}
+<div class="detections">
+    <div class="detections-header">
+        <h2>Detection History</h2>
+        <button class="btn btn-secondary" id="refreshBtn">
+            <span>🔄</span> Refresh
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table class="detections-table">
+            <thead>
+                <tr>
+                    <th>Plate Number</th>
+                    <th>Confidence</th>
+                    <th>Status</th>
+                    <th>Detected At</th>
+                </tr>
+            </thead>
+            <tbody id="detectionsTableBody">
+                {% for detection in detections %}
+                <tr>
+                    <td><strong>{{ detection[0] }}</strong></td>
+                    <td>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" style="width: {{ (detection[1] * 100)|int }}%"></div>
+                            <span class="confidence-text">{{ (detection[1] * 100)|int }}%</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ 'success' if detection[4] == 'registered' else 'warning' }}">
+                            {{ detection[4].upper() }}
+                        </span>
+                    </td>
+                    <td>{{ detection[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="detections-footer">
+        <p id="detectionCount">Total: {{ detections|length }} detection(s)</p>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/detections.js') }}"></script>
+{% endblock %}
