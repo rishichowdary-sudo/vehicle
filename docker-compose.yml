@@ -11,6 +11,9 @@ services:
       - ./static/uploads:/app/static/uploads
     environment:
       - FLASK_ENV=production
+      - DATABASE_PATH=/app/data/vehicle_registry.db
+      - YOLO_MODEL_PATH=license_plate_detector.pt
+      - USE_GPU=0
     restart: unless-stopped
     networks:
       - shared-network
