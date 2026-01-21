@@ -1,0 +1,154 @@
+{
+  "test_date": "2026-01-12T14:58:40.981220",
+  "test_folder": "C:\\Users\\Rishichowdary-3925\\Downloads\\No plates",
+  "results": {
+    "RT-DETRv4 (rtdetr-x.pt)": {
+      "model_name": "RT-DETRv4 (rtdetr-x.pt)",
+      "total_detections": 23,
+      "successful_reads": 10,
+      "images_with_detection": 8,
+      "total_images": 8,
+      "detection_rate": 100.0,
+      "ocr_success_rate": 43.47826086956522,
+      "end_to_end_success": 125.0,
+      "avg_det_time_ms": 2184.854209423065,
+      "avg_ocr_time_ms": 1720.773116402004,
+      "avg_total_time_ms": 3905.6273258250694,
+      "avg_det_conf": 0.6542748411496481,
+      "avg_ocr_conf": 0.9530077546834945,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "KL7CE6616",
+          "det_conf": 0.949030876159668,
+          "ocr_conf": 0.9660125970840454
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.9633789658546448,
+          "ocr_conf": 0.97978675365448
+        },
+        {
+          "image": "double.png",
+          "text": "VOLTIO5646MYF",
+          "det_conf": 0.9630696177482605,
+          "ocr_conf": 0.9742672741413116
+        },
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.9627013802528381,
+          "ocr_conf": 0.9191182255744934
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.9682450890541077,
+          "ocr_conf": 0.9049272537231445
+        },
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA0001",
+          "det_conf": 0.9256821870803833,
+          "ocr_conf": 0.9928787350654602
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H352",
+          "det_conf": 0.9114139080047607,
+          "ocr_conf": 0.925142228603363
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN136JSHH3516",
+          "det_conf": 0.769913375377655,
+          "ocr_conf": 0.9126779437065125
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.9315550923347473,
+          "ocr_conf": 0.9683336019515991
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.4159432053565979,
+          "ocr_conf": 0.9869329333305359
+        }
+      ]
+    },
+    "Custom YOLO": {
+      "model_name": "Custom YOLO",
+      "total_detections": 11,
+      "successful_reads": 9,
+      "images_with_detection": 8,
+      "total_images": 8,
+      "detection_rate": 100.0,
+      "ocr_success_rate": 81.81818181818183,
+      "end_to_end_success": 112.5,
+      "avg_det_time_ms": 151.74880623817444,
+      "avg_ocr_time_ms": 1724.1301970048385,
+      "avg_total_time_ms": 1875.879003243013,
+      "avg_det_conf": 0.660819411277771,
+      "avg_ocr_conf": 0.8497411840491824,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "NLL9CEC",
+          "det_conf": 0.7534158229827881,
+          "ocr_conf": 0.42941710352897644
+        },
+        {
+          "image": "double.png",
+          "text": "5646MYF",
+          "det_conf": 0.6044662594795227,
+          "ocr_conf": 0.9883588552474976
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.3454328775405884,
+          "ocr_conf": 0.937793493270874
+        },
+        {
+          "image": "images.jpg",
+          "text": "22973300M",
+          "det_conf": 0.7714559435844421,
+          "ocr_conf": 0.512442409992218
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.7578852772712708,
+          "ocr_conf": 0.9893001914024353
+        },
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA000",
+          "det_conf": 0.7109003067016602,
+          "ocr_conf": 0.933602511882782
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.7576409578323364,
+          "ocr_conf": 0.999584436416626
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.6743607521057129,
+          "ocr_conf": 0.9383773803710938
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "XA02MP9657",
+          "det_conf": 0.6343263387680054,
+          "ocr_conf": 0.9187942743301392
+        }
+      ]
+    }
+  }
+}

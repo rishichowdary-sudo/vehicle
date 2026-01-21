@@ -1,0 +1,495 @@
+{
+  "test_date": "2026-01-12T13:38:32.372101",
+  "test_images_count": 8,
+  "test_data_path": "C:\\Users\\Rishichowdary-3925\\Downloads\\No plates",
+  "ocr_model": "PaddleOCR (Your existing implementation)",
+  "results": {
+    "YOLOv8n (Nano)": {
+      "model_name": "YOLOv8n (Nano)",
+      "model_path": "yolov8n.pt",
+      "detection_rate_percent": 100.0,
+      "total_detections": 13,
+      "images_with_plates": 8,
+      "avg_detection_confidence": 0.631886328642185,
+      "avg_detection_time_ms": 159.64919328689575,
+      "detection_fps": 6.263733498502316,
+      "ocr_success_rate_percent": 69.23076923076923,
+      "successful_ocr_reads": 9,
+      "avg_ocr_confidence": 0.956049782258493,
+      "avg_ocr_time_ms": 3302.001219529372,
+      "end_to_end_success_rate": 112.5,
+      "avg_total_time_ms": 3461.650412816268,
+      "total_fps": 0.2888795460967527,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "plate_text": "KL7CE6616",
+          "det_confidence": 0.5556681156158447,
+          "ocr_confidence": 0.9963185787200928,
+          "det_time_ms": 188.57765197753906,
+          "ocr_time_ms": 2334.50984954834
+        },
+        {
+          "image": "images.jpg",
+          "plate_text": "MP04CC2688",
+          "det_confidence": 0.539539098739624,
+          "ocr_confidence": 0.928533673286438,
+          "det_time_ms": 141.34645462036133,
+          "ocr_time_ms": 3024.6338844299316
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.35332730412483215,
+          "ocr_confidence": 0.9572356939315796,
+          "det_time_ms": 202.24571228027344,
+          "ocr_time_ms": 2333.7244987487793
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "OZ2LD88898889",
+          "det_confidence": 0.8085174560546875,
+          "ocr_confidence": 0.8829347193241119,
+          "det_time_ms": 201.9178867340088,
+          "ocr_time_ms": 3367.7797317504883
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN1368886888H3524",
+          "det_confidence": 0.7391716837882996,
+          "ocr_confidence": 0.9844789107640585,
+          "det_time_ms": 201.9178867340088,
+          "ocr_time_ms": 2740.0832176208496
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.6509866118431091,
+          "ocr_confidence": 0.9947448968887329,
+          "det_time_ms": 134.9809169769287,
+          "ocr_time_ms": 2120.8038330078125
+        },
+        {
+          "image": "ver.jpeg",
+          "plate_text": "IVTECKAD2MP9657",
+          "det_confidence": 0.5595499873161316,
+          "ocr_confidence": 0.8790502846240997,
+          "det_time_ms": 125.41079521179199,
+          "ocr_time_ms": 14466.65334701538
+        },
+        {
+          "image": "double.png",
+          "plate_text": "6414MYF",
+          "det_confidence": 0.9453163743019104,
+          "ocr_confidence": 0.9909968376159668,
+          "det_time_ms": 136.21115684509277,
+          "ocr_time_ms": 2699.5341777801514
+        },
+        {
+          "image": "double.png",
+          "plate_text": "VOLTIO5646MYF",
+          "det_confidence": 0.938398003578186,
+          "ocr_confidence": 0.9901544451713562,
+          "det_time_ms": 136.21115684509277,
+          "ocr_time_ms": 3078.4645080566406
+        }
+      ]
+    },
+    "YOLOv8s (Small)": {
+      "model_name": "YOLOv8s (Small)",
+      "model_path": "yolov8s.pt",
+      "detection_rate_percent": 100.0,
+      "total_detections": 19,
+      "images_with_plates": 8,
+      "avg_detection_confidence": 0.635731882170627,
+      "avg_detection_time_ms": 340.9865200519562,
+      "detection_fps": 2.932667249859701,
+      "ocr_success_rate_percent": 52.63157894736842,
+      "successful_ocr_reads": 10,
+      "avg_ocr_confidence": 0.8611025854945182,
+      "avg_ocr_time_ms": 2811.2766993673226,
+      "end_to_end_success_rate": 125.0,
+      "avg_total_time_ms": 3152.263219419279,
+      "total_fps": 0.317232391584426,
+      "sample_results": [
+        {
+          "image": "images.jpg",
+          "plate_text": "MP04CC2688",
+          "det_confidence": 0.8006842732429504,
+          "ocr_confidence": 0.9218010306358337,
+          "det_time_ms": 356.05859756469727,
+          "ocr_time_ms": 2320.2884197235107
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.4535137712955475,
+          "ocr_confidence": 0.9418923258781433,
+          "det_time_ms": 335.3548049926758,
+          "ocr_time_ms": 2061.5851879119873
+        },
+        {
+          "image": "ss.jpg",
+          "plate_text": "AA00AOA000",
+          "det_confidence": 0.5732758045196533,
+          "ocr_confidence": 0.5058875679969788,
+          "det_time_ms": 356.1899662017822,
+          "ocr_time_ms": 2093.3494567871094
+        },
+        {
+          "image": "ss.jpg",
+          "plate_text": "DELASTEWRBOUCFOUALFRICT",
+          "det_confidence": 0.30914610624313354,
+          "ocr_confidence": 0.5789838433265686,
+          "det_time_ms": 356.1899662017822,
+          "ocr_time_ms": 2169.72017288208
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "PZ2LD88898889",
+          "det_confidence": 0.8687214255332947,
+          "ocr_confidence": 0.8917140662670135,
+          "det_time_ms": 384.3100070953369,
+          "ocr_time_ms": 3386.183023452759
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3524",
+          "det_confidence": 0.8556930422782898,
+          "ocr_confidence": 0.963006317615509,
+          "det_time_ms": 384.3100070953369,
+          "ocr_time_ms": 2434.7763061523438
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.8337501883506775,
+          "ocr_confidence": 0.9947448968887329,
+          "det_time_ms": 348.876953125,
+          "ocr_time_ms": 2370.0997829437256
+        },
+        {
+          "image": "ver.jpeg",
+          "plate_text": "IVTECCITYZXKAD2MP9657",
+          "det_confidence": 0.7224566340446472,
+          "ocr_confidence": 0.8974722474813461,
+          "det_time_ms": 318.85504722595215,
+          "ocr_time_ms": 15181.612968444824
+        },
+        {
+          "image": "double.png",
+          "plate_text": "6414MYF",
+          "det_confidence": 0.9337086081504822,
+          "ocr_confidence": 0.9505611658096313,
+          "det_time_ms": 367.8252696990967,
+          "ocr_time_ms": 2603.0972003936768
+        },
+        {
+          "image": "double.png",
+          "plate_text": "VOLTIO5646MYF",
+          "det_confidence": 0.9130300879478455,
+          "ocr_confidence": 0.9649623930454254,
+          "det_time_ms": 367.8252696990967,
+          "ocr_time_ms": 3110.9259128570557
+        }
+      ]
+    },
+    "YOLOv8m (Medium)": {
+      "model_name": "YOLOv8m (Medium)",
+      "model_path": "yolov8m.pt",
+      "detection_rate_percent": 100.0,
+      "total_detections": 18,
+      "images_with_plates": 8,
+      "avg_detection_confidence": 0.6254622886578242,
+      "avg_detection_time_ms": 818.2588815689087,
+      "detection_fps": 1.2221071136834172,
+      "ocr_success_rate_percent": 55.55555555555556,
+      "successful_ocr_reads": 10,
+      "avg_ocr_confidence": 0.9601722031831741,
+      "avg_ocr_time_ms": 2899.859587351481,
+      "end_to_end_success_rate": 125.0,
+      "avg_total_time_ms": 3718.1184689203897,
+      "total_fps": 0.26895323760094303,
+      "sample_results": [
+        {
+          "image": "images.jpg",
+          "plate_text": "MP04CC2688",
+          "det_confidence": 0.5151749849319458,
+          "ocr_confidence": 0.9322099089622498,
+          "det_time_ms": 838.3839130401611,
+          "ocr_time_ms": 2318.0453777313232
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.8220637440681458,
+          "ocr_confidence": 0.9454746246337891,
+          "det_time_ms": 783.8594913482666,
+          "ocr_time_ms": 2095.2320098876953
+        },
+        {
+          "image": "ss.jpg",
+          "plate_text": "AP13AA0001",
+          "det_confidence": 0.36306557059288025,
+          "ocr_confidence": 0.9543493390083313,
+          "det_time_ms": 926.4132976531982,
+          "ocr_time_ms": 2347.334384918213
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3524",
+          "det_confidence": 0.793987512588501,
+          "ocr_confidence": 0.9770761132240295,
+          "det_time_ms": 1018.3680057525635,
+          "ocr_time_ms": 2843.5657024383545
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "88898889",
+          "det_confidence": 0.5975239872932434,
+          "ocr_confidence": 0.9986763000488281,
+          "det_time_ms": 1018.3680057525635,
+          "ocr_time_ms": 3295.0217723846436
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.5729300379753113,
+          "ocr_confidence": 0.9947448968887329,
+          "det_time_ms": 801.3641834259033,
+          "ocr_time_ms": 2432.098627090454
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.5606868267059326,
+          "ocr_confidence": 0.9947448968887329,
+          "det_time_ms": 801.3641834259033,
+          "ocr_time_ms": 2030.6580066680908
+        },
+        {
+          "image": "ver.jpeg",
+          "plate_text": "IVTECCTTYZXKA02MP9657",
+          "det_confidence": 0.8258006572723389,
+          "ocr_confidence": 0.8626945614814758,
+          "det_time_ms": 794.2109107971191,
+          "ocr_time_ms": 15283.761978149414
+        },
+        {
+          "image": "double.png",
+          "plate_text": "VOLTIO5646MYF",
+          "det_confidence": 0.9601200222969055,
+          "ocr_confidence": 0.9911902248859406,
+          "det_time_ms": 798.389196395874,
+          "ocr_time_ms": 3085.498809814453
+        },
+        {
+          "image": "double.png",
+          "plate_text": "6414MYF",
+          "det_confidence": 0.8723179697990417,
+          "ocr_confidence": 0.9505611658096313,
+          "det_time_ms": 798.389196395874,
+          "ocr_time_ms": 2507.0574283599854
+        }
+      ]
+    },
+    "YOLOv8l (Large)": {
+      "model_name": "YOLOv8l (Large)",
+      "model_path": "yolov8l.pt",
+      "detection_rate_percent": 100.0,
+      "total_detections": 20,
+      "images_with_plates": 8,
+      "avg_detection_confidence": 0.628065225481987,
+      "avg_detection_time_ms": 1543.49684715271,
+      "detection_fps": 0.6478795222968553,
+      "ocr_success_rate_percent": 55.00000000000001,
+      "successful_ocr_reads": 11,
+      "avg_ocr_confidence": 0.9437070777921966,
+      "avg_ocr_time_ms": 2742.8197145462036,
+      "end_to_end_success_rate": 137.5,
+      "avg_total_time_ms": 4286.316561698914,
+      "total_fps": 0.23330054735939582,
+      "sample_results": [
+        {
+          "image": "images.jpg",
+          "plate_text": "MP04CC2688",
+          "det_confidence": 0.5374062657356262,
+          "ocr_confidence": 0.9445191621780396,
+          "det_time_ms": 1559.7925186157227,
+          "ocr_time_ms": 2389.698266983032
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.46935397386550903,
+          "ocr_confidence": 0.9454746246337891,
+          "det_time_ms": 1589.2772674560547,
+          "ocr_time_ms": 2027.4620056152344
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.41352757811546326,
+          "ocr_confidence": 0.9454746246337891,
+          "det_time_ms": 1589.2772674560547,
+          "ocr_time_ms": 1799.7584342956543
+        },
+        {
+          "image": "ss.jpg",
+          "plate_text": "AP13AA0001",
+          "det_confidence": 0.3405280113220215,
+          "ocr_confidence": 0.9902673363685608,
+          "det_time_ms": 1680.5956363677979,
+          "ocr_time_ms": 2079.908609390259
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3524",
+          "det_confidence": 0.936508297920227,
+          "ocr_confidence": 0.9291758239269257,
+          "det_time_ms": 1709.12504196167,
+          "ocr_time_ms": 2628.222942352295
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "PZ2LD888988892",
+          "det_confidence": 0.7996964454650879,
+          "ocr_confidence": 0.8759988248348236,
+          "det_time_ms": 1709.12504196167,
+          "ocr_time_ms": 3425.912380218506
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3516",
+          "det_confidence": 0.4259819984436035,
+          "ocr_confidence": 0.9644303023815155,
+          "det_time_ms": 1709.12504196167,
+          "ocr_time_ms": 2300.7373809814453
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.9128322601318359,
+          "ocr_confidence": 0.9947448968887329,
+          "det_time_ms": 1599.6592044830322,
+          "ocr_time_ms": 2303.7497997283936
+        },
+        {
+          "image": "ver.jpeg",
+          "plate_text": "HVTECCITYZXKAD2MP9657",
+          "det_confidence": 0.8048279285430908,
+          "ocr_confidence": 0.8489408691724142,
+          "det_time_ms": 1555.5405616760254,
+          "ocr_time_ms": 14595.87025642395
+        },
+        {
+          "image": "double.png",
+          "plate_text": "6414MYF",
+          "det_confidence": 0.948331892490387,
+          "ocr_confidence": 0.9505611658096313,
+          "det_time_ms": 1524.35302734375,
+          "ocr_time_ms": 2466.8540954589844
+        }
+      ]
+    },
+    "Custom-Plate-Detector": {
+      "model_name": "Custom-Plate-Detector",
+      "model_path": "license_plate_detector.pt",
+      "detection_rate_percent": 100.0,
+      "total_detections": 11,
+      "images_with_plates": 8,
+      "avg_detection_confidence": 0.660819411277771,
+      "avg_detection_time_ms": 116.30091071128845,
+      "detection_fps": 8.598384947151901,
+      "ocr_success_rate_percent": 90.9090909090909,
+      "successful_ocr_reads": 10,
+      "avg_ocr_confidence": 0.8999176561832428,
+      "avg_ocr_time_ms": 1898.4189683740788,
+      "end_to_end_success_rate": 125.0,
+      "avg_total_time_ms": 2014.7198790853672,
+      "total_fps": 0.4963469167008841,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "plate_text": "NLC9CEL1E",
+          "det_confidence": 0.7534158229827881,
+          "ocr_confidence": 0.3451475501060486,
+          "det_time_ms": 102.62322425842285,
+          "ocr_time_ms": 1954.7829627990723
+        },
+        {
+          "image": "images.jpg",
+          "plate_text": "MP04CC2688",
+          "det_confidence": 0.7714559435844421,
+          "ocr_confidence": 0.9717784523963928,
+          "det_time_ms": 120.7726001739502,
+          "ocr_time_ms": 1749.211311340332
+        },
+        {
+          "image": "rqandom.jpg",
+          "plate_text": "KL22A9422",
+          "det_confidence": 0.7578852772712708,
+          "ocr_confidence": 0.950239896774292,
+          "det_time_ms": 114.0439510345459,
+          "ocr_time_ms": 1937.0663166046143
+        },
+        {
+          "image": "ss.jpg",
+          "plate_text": "AP13AA0001",
+          "det_confidence": 0.7109003067016602,
+          "ocr_confidence": 0.9629337191581726,
+          "det_time_ms": 117.27023124694824,
+          "ocr_time_ms": 1846.0700511932373
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3516",
+          "det_confidence": 0.7576409578323364,
+          "ocr_confidence": 0.9995599687099457,
+          "det_time_ms": 133.90755653381348,
+          "ocr_time_ms": 1975.7750034332275
+        },
+        {
+          "image": "unnamed.jpg",
+          "plate_text": "TN13H3524",
+          "det_confidence": 0.6743607521057129,
+          "ocr_confidence": 0.9326438009738922,
+          "det_time_ms": 133.90755653381348,
+          "ocr_time_ms": 1820.9974765777588
+        },
+        {
+          "image": "vnv.jpg",
+          "plate_text": "HR26FC2782",
+          "det_confidence": 0.7562125325202942,
+          "ocr_confidence": 0.9989117383956909,
+          "det_time_ms": 117.0356273651123,
+          "ocr_time_ms": 1816.3952827453613
+        },
+        {
+          "image": "ver.jpeg",
+          "plate_text": "KA02MP9657",
+          "det_confidence": 0.6343263387680054,
+          "ocr_confidence": 0.8852917551994324,
+          "det_time_ms": 115.98968505859375,
+          "ocr_time_ms": 2865.424633026123
+        },
+        {
+          "image": "double.png",
+          "plate_text": "5646MYF",
+          "det_confidence": 0.6044662594795227,
+          "ocr_confidence": 0.9794617295265198,
+          "det_time_ms": 108.7644100189209,
+          "ocr_time_ms": 1684.107780456543
+        },
+        {
+          "image": "double.png",
+          "plate_text": "6414MYF",
+          "det_confidence": 0.3454328775405884,
+          "ocr_confidence": 0.973207950592041,
+          "det_time_ms": 108.7644100189209,
+          "ocr_time_ms": 1584.7229957580566
+        }
+      ]
+    }
+  }
+}

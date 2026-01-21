@@ -1,0 +1,373 @@
+{
+  "test_date": "2026-01-12T14:34:55.943814",
+  "test_images": 8,
+  "device": "cpu",
+  "results": {
+    "Custom YOLO": {
+      "model_name": "Custom YOLO",
+      "total_detections": 11,
+      "successful_reads": 10,
+      "images_with_detection": 8,
+      "detection_rate": 100.0,
+      "avg_det_time_ms": 142.74632930755615,
+      "avg_ocr_time_ms": 1662.8765626387162,
+      "avg_total_time_ms": 1805.6228919462724,
+      "avg_det_conf": 0.660819411277771,
+      "avg_ocr_conf": 0.8999176502227784,
+      "ocr_success_rate": 90.9090909090909,
+      "end_to_end_success": 125.0,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "NLC9CEL1E",
+          "det_conf": 0.7534158229827881,
+          "ocr_conf": 0.3451475501060486
+        },
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.7714559435844421,
+          "ocr_conf": 0.9717784523963928
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.7578852772712708,
+          "ocr_conf": 0.9502398371696472
+        },
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA0001",
+          "det_conf": 0.7109003067016602,
+          "ocr_conf": 0.9629337191581726
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.7576409578323364,
+          "ocr_conf": 0.9995599687099457
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.6743607521057129,
+          "ocr_conf": 0.9326437711715698
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.7562125325202942,
+          "ocr_conf": 0.9989117383956909
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "KA02MP9657",
+          "det_conf": 0.6343263387680054,
+          "ocr_conf": 0.8852917850017548
+        },
+        {
+          "image": "double.png",
+          "text": "5646MYF",
+          "det_conf": 0.6044662594795227,
+          "ocr_conf": 0.9794617295265198
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.3454328775405884,
+          "ocr_conf": 0.973207950592041
+        }
+      ]
+    },
+    "YOLOv10n": {
+      "model_name": "YOLOv10n",
+      "total_detections": 9,
+      "successful_reads": 5,
+      "images_with_detection": 4,
+      "detection_rate": 50.0,
+      "avg_det_time_ms": 138.6776864528656,
+      "avg_ocr_time_ms": 2375.5583498213023,
+      "avg_total_time_ms": 2514.236036274168,
+      "avg_det_conf": 0.6445928679572211,
+      "avg_ocr_conf": 0.9358393132686615,
+      "ocr_success_rate": 55.55555555555556,
+      "end_to_end_success": 62.5,
+      "sample_results": [
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.5104936361312866,
+          "ocr_conf": 0.9454746246337891
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "PZ2LD88898889",
+          "det_conf": 0.6296047568321228,
+          "ocr_conf": 0.8917140662670135
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "HVTECCTTYZXKAD2MP9657",
+          "det_conf": 0.4685911536216736,
+          "ocr_conf": 0.8787112236022949
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.9205486178398132,
+          "ocr_conf": 0.984332799911499
+        },
+        {
+          "image": "double.png",
+          "text": "VOLTIO5646MYF",
+          "det_conf": 0.9155009388923645,
+          "ocr_conf": 0.9789638519287109
+        }
+      ]
+    },
+    "YOLOv10s": {
+      "model_name": "YOLOv10s",
+      "total_detections": 17,
+      "successful_reads": 9,
+      "images_with_detection": 6,
+      "detection_rate": 75.0,
+      "avg_det_time_ms": 318.5908794403076,
+      "avg_ocr_time_ms": 2614.9862093084,
+      "avg_total_time_ms": 2933.5770887487074,
+      "avg_det_conf": 0.5819191284039441,
+      "avg_ocr_conf": 0.9480701817406548,
+      "ocr_success_rate": 52.94117647058824,
+      "end_to_end_success": 112.5,
+      "sample_results": [
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.37579888105392456,
+          "ocr_conf": 0.9615761637687683
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.9199381470680237,
+          "ocr_conf": 0.9652481377124786
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.5231867432594299,
+          "ocr_conf": 0.9983553290367126
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "HHK8889888",
+          "det_conf": 0.4799495339393616,
+          "ocr_conf": 0.7929527759552002
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.7670700550079346,
+          "ocr_conf": 0.9947448968887329
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "IVTECCTTYZXKAD2MP9657",
+          "det_conf": 0.573053240776062,
+          "ocr_conf": 0.9212163686752319
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "IVTECCTTYZXKAD2MP9657",
+          "det_conf": 0.3451099991798401,
+          "ocr_conf": 0.9212163686752319
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.9405398368835449,
+          "ocr_conf": 0.9929115772247314
+        },
+        {
+          "image": "double.png",
+          "text": "VOLTIO5646MYF",
+          "det_conf": 0.9393418431282043,
+          "ocr_conf": 0.9844100177288055
+        }
+      ]
+    },
+    "YOLOv10m": {
+      "model_name": "YOLOv10m",
+      "total_detections": 15,
+      "successful_reads": 8,
+      "images_with_detection": 7,
+      "detection_rate": 87.5,
+      "avg_det_time_ms": 556.4805865287781,
+      "avg_ocr_time_ms": 2086.5799744923906,
+      "avg_total_time_ms": 2643.0605610211687,
+      "avg_det_conf": 0.6319581051667531,
+      "avg_ocr_conf": 0.9548903095225494,
+      "ocr_success_rate": 53.333333333333336,
+      "end_to_end_success": 100.0,
+      "sample_results": [
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.3616960346698761,
+          "ocr_conf": 0.9549833536148071
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.7161468863487244,
+          "ocr_conf": 0.9454746246337891
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.8945306539535522,
+          "ocr_conf": 0.9570426344871521
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.45307183265686035,
+          "ocr_conf": 0.9947448968887329
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.4345252811908722,
+          "ocr_conf": 0.9947448968887329
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "HVTECCITYZXKAD2MP9657",
+          "det_conf": 0.90385502576828,
+          "ocr_conf": 0.8489408691724142
+        },
+        {
+          "image": "double.png",
+          "text": "VOLTIO5646MYF",
+          "det_conf": 0.9417133927345276,
+          "ocr_conf": 0.9926300346851349
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.924626886844635,
+          "ocr_conf": 0.9505611658096313
+        }
+      ]
+    },
+    "RT-DETR-L": {
+      "model_name": "RT-DETR-L",
+      "total_detections": 23,
+      "successful_reads": 11,
+      "images_with_detection": 8,
+      "detection_rate": 100.0,
+      "avg_det_time_ms": 1326.8126249313354,
+      "avg_ocr_time_ms": 2156.9102017775826,
+      "avg_total_time_ms": 3483.722826708918,
+      "avg_det_conf": 0.6641062109366708,
+      "avg_ocr_conf": 0.9464380416003141,
+      "ocr_success_rate": 47.82608695652174,
+      "end_to_end_success": 137.5,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "KL7CE661601",
+          "det_conf": 0.9489871263504028,
+          "ocr_conf": 0.832897961139679
+        },
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.9638550877571106,
+          "ocr_conf": 0.9522559642791748
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.9593549966812134,
+          "ocr_conf": 0.9454746246337891
+        },
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA0001",
+          "det_conf": 0.9179903864860535,
+          "ocr_conf": 0.9802955985069275
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "PZ2LD88898889",
+          "det_conf": 0.9199244379997253,
+          "ocr_conf": 0.8917140662670135
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.8590506315231323,
+          "ocr_conf": 0.9673078656196594
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.9552619457244873,
+          "ocr_conf": 0.9947448968887329
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.43993663787841797,
+          "ocr_conf": 0.9947448968887329
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "HVTECCITYZXKAD2MP9657",
+          "det_conf": 0.9756680130958557,
+          "ocr_conf": 0.8673769533634186
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.9656805396080017,
+          "ocr_conf": 0.9920060038566589
+        }
+      ]
+    },
+    "YOLO-World": {
+      "model_name": "YOLO-World",
+      "total_detections": 3,
+      "successful_reads": 3,
+      "images_with_detection": 2,
+      "detection_rate": 25.0,
+      "avg_det_time_ms": 1305.4900467395782,
+      "avg_ocr_time_ms": 6565.5709107716875,
+      "avg_total_time_ms": 7871.060957511266,
+      "avg_det_conf": 0.5161049664020538,
+      "avg_ocr_conf": 0.9922783772150675,
+      "ocr_success_rate": 100.0,
+      "end_to_end_success": 37.5,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "KL7CE6616",
+          "det_conf": 0.3602008521556854,
+          "ocr_conf": 0.9775822162628174
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.616809606552124,
+          "ocr_conf": 0.9996264576911926
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.571304440498352,
+          "ocr_conf": 0.9996264576911926
+        }
+      ]
+    }
+  }
+}

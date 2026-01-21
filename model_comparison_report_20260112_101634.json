@@ -1,0 +1,111 @@
+{
+  "test_date": "2026-01-12T10:16:34.458173",
+  "test_images_count": 8,
+  "test_data_path": "C:\\Users\\Rishichowdary-3925\\Downloads\\No plates",
+  "results": {
+    "detection_models": {
+      "YOLOv8n": {
+        "avg_inference_time_ms": 93.6238169670105,
+        "total_detections": 13,
+        "avg_confidence": 0.6318862186028407,
+        "detection_rate_percent": 100.0,
+        "images_with_detection": 8,
+        "fps": 10.681042841399666
+      },
+      "YOLOv8s": {
+        "avg_inference_time_ms": 150.19789338111877,
+        "total_detections": 19,
+        "avg_confidence": 0.6357316986510628,
+        "detection_rate_percent": 100.0,
+        "images_with_detection": 8,
+        "fps": 6.657882993488835
+      },
+      "YOLOv8m": {
+        "avg_inference_time_ms": 342.37977862358093,
+        "total_detections": 18,
+        "avg_confidence": 0.6254623830318451,
+        "detection_rate_percent": 100.0,
+        "images_with_detection": 8,
+        "fps": 2.920733239621081
+      },
+      "YOLOv8l": {
+        "avg_inference_time_ms": 708.4580361843109,
+        "total_detections": 20,
+        "avg_confidence": 0.6280652344226837,
+        "detection_rate_percent": 100.0,
+        "images_with_detection": 8,
+        "fps": 1.4115162069244171
+      },
+      "Custom-Plate-Detector": {
+        "avg_inference_time_ms": 65.01546502113342,
+        "total_detections": 11,
+        "avg_confidence": 0.66081948984753,
+        "detection_rate_percent": 100.0,
+        "images_with_detection": 8,
+        "fps": 15.380955895261962
+      }
+    },
+    "ocr_models": {
+      "PaddleOCR": {
+        "error": "Unknown argument: show_log"
+      },
+      "EasyOCR": {
+        "avg_inference_time_ms": 580.9980905972994,
+        "successful_reads": 9,
+        "success_rate_percent": 69.23076923076923,
+        "avg_confidence": 0.33775287463576004,
+        "sample_texts": [
+          {
+            "source": "bg.jpg",
+            "text": "[lZ Ce 6616",
+            "confidence": 0.12482261235221152
+          },
+          {
+            "source": "images.jpg",
+            "text": "MP 04 cC 68u",
+            "confidence": 0.11691120703204945
+          },
+          {
+            "source": "unnamed.jpg",
+            "text": "\"6888 [6888 Dominob Fhtd\" L= TN-13 43516",
+            "confidence": 0.34778826327204626
+          },
+          {
+            "source": "unnamed.jpg",
+            "text": "6888 45 26880-",
+            "confidence": 0.2659856183591518
+          },
+          {
+            "source": "vnv.jpg",
+            "text": "HRZGFC2782",
+            "confidence": 0.8851888272736306
+          },
+          {
+            "source": "ver.jpeg",
+            "text": "Ktc KA 02MP 9657 CYE4",
+            "confidence": 0.28909297649584664
+          },
+          {
+            "source": "double.png",
+            "text": "DNm 16414 MYF",
+            "confidence": 0.3545417148607414
+          },
+          {
+            "source": "double.png",
+            "text": "voltio MYFI 15646",
+            "confidence": 0.6333652313597523
+          },
+          {
+            "source": "double.png",
+            "text": "Lrc",
+            "confidence": 0.02207942071640997
+          }
+        ]
+      },
+      "Tesseract": {
+        "error": "tesseract is not installed or it's not in your PATH. See README file for more information."
+      }
+    },
+    "combined_results": {}
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "test_date": "2026-01-12T13:59:23.399570",
+  "test_images": 8,
+  "results": {
+    "Custom YOLO": {
+      "total_detections": 11,
+      "successful_reads": 10,
+      "images_with_detection": 8,
+      "detection_rate": 100.0,
+      "avg_det_time_ms": 149.60560202598572,
+      "avg_ocr_time_ms": 1664.496573534879,
+      "avg_total_time_ms": 1814.1021755608647,
+      "avg_det_conf": 0.660819411277771,
+      "avg_ocr_conf": 0.8999176502227784,
+      "ocr_success_rate": 90.9090909090909,
+      "end_to_end_success": 125.0,
+      "sample_results": [
+        {
+          "image": "bg.jpg",
+          "text": "NLC9CEL1E",
+          "det_conf": 0.7534158229827881,
+          "ocr_conf": 0.3451475501060486
+        },
+        {
+          "image": "images.jpg",
+          "text": "MP04CC2688",
+          "det_conf": 0.7714559435844421,
+          "ocr_conf": 0.9717784523963928
+        },
+        {
+          "image": "rqandom.jpg",
+          "text": "KL22A9422",
+          "det_conf": 0.7578852772712708,
+          "ocr_conf": 0.9502398371696472
+        },
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA0001",
+          "det_conf": 0.7109003067016602,
+          "ocr_conf": 0.9629337191581726
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3516",
+          "det_conf": 0.7576409578323364,
+          "ocr_conf": 0.9995599687099457
+        },
+        {
+          "image": "unnamed.jpg",
+          "text": "TN13H3524",
+          "det_conf": 0.6743607521057129,
+          "ocr_conf": 0.9326437711715698
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.7562125325202942,
+          "ocr_conf": 0.9989117383956909
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "KA02MP9657",
+          "det_conf": 0.6343263387680054,
+          "ocr_conf": 0.8852917850017548
+        },
+        {
+          "image": "double.png",
+          "text": "5646MYF",
+          "det_conf": 0.6044662594795227,
+          "ocr_conf": 0.9794617295265198
+        },
+        {
+          "image": "double.png",
+          "text": "6414MYF",
+          "det_conf": 0.3454328775405884,
+          "ocr_conf": 0.973207950592041
+        }
+      ]
+    },
+    "Haar Cascade": {
+      "total_detections": 2,
+      "successful_reads": 2,
+      "images_with_detection": 2,
+      "detection_rate": 25.0,
+      "avg_det_time_ms": 141.19485020637512,
+      "avg_ocr_time_ms": 1790.8836603164673,
+      "avg_total_time_ms": 1932.0785105228424,
+      "avg_det_conf": 0.9,
+      "avg_ocr_conf": 0.9668791592121124,
+      "ocr_success_rate": 100.0,
+      "end_to_end_success": 25.0,
+      "sample_results": [
+        {
+          "image": "vnv.jpg",
+          "text": "HR26FC2782",
+          "det_conf": 0.9,
+          "ocr_conf": 0.9986403584480286
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "KA02MP9657",
+          "det_conf": 0.9,
+          "ocr_conf": 0.9351179599761963
+        }
+      ]
+    },
+    "Contour-Based": {
+      "total_detections": 7,
+      "successful_reads": 4,
+      "images_with_detection": 4,
+      "detection_rate": 50.0,
+      "avg_det_time_ms": 3.4064650535583496,
+      "avg_ocr_time_ms": 2485.093423298427,
+      "avg_total_time_ms": 2488.499888351985,
+      "avg_det_conf": 0.6099674393241823,
+      "avg_ocr_conf": 0.7172329922517141,
+      "ocr_success_rate": 57.14285714285714,
+      "end_to_end_success": 50.0,
+      "sample_results": [
+        {
+          "image": "ss.jpg",
+          "text": "AP13AA0001",
+          "det_conf": 0.7083333333333333,
+          "ocr_conf": 0.895707905292511
+        },
+        {
+          "image": "vnv.jpg",
+          "text": "HBL2EE2",
+          "det_conf": 0.7764705882352941,
+          "ocr_conf": 0.37146300077438354
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "KA02MP9657",
+          "det_conf": 0.4462633451957295,
+          "ocr_conf": 0.8978483080863953
+        },
+        {
+          "image": "ver.jpeg",
+          "text": "XZALDJELA",
+          "det_conf": 0.5004366812227075,
+          "ocr_conf": 0.7039127548535665
+        }
+      ]
+    }
+  }
+}
