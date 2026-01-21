@@ -1,65 +1,22 @@
-# ============================================
-# Vehicle Plate Detection & Registration System
-# Dependencies
-# ============================================
-#
-# Installation:
-# pip install -r requirements.txt
-#
-# ============================================
-
 # Computer Vision & Image Processing
 opencv-python>=4.8.0
-numpy>=1.24.0
-flask>=2.3.0
-paddlepaddle
-paddleocr
-# easyocr (replaced by paddleocr)
+numpy>=1.24.0,<2.0  # numpy 2.x has compatibility issues with paddle
 Pillow>=10.1.0
 
 # YOLOv8 for License Plate Detection
 ultralytics>=8.0.0
 
-# OCR - PaddleOCR (RECOMMENDED - More Accurate for License Plates!)
-paddlepaddle>=2.5.0
-paddleocr>=2.7.0
-
-# OCR - EasyOCR (Fallback if PaddleOCR not available)
-easyocr>=1.7.0
-
-# Deep Learning Backends
-torch>=2.0.0
-torchvision>=0.15.0
-
-# Additional Dependencies for EasyOCR
-scipy>=1.10.0
-scikit-image>=0.21.0
+paddlepaddle==3.2.2
+paddleocr==3.3.3
 
 # Web Framework - Flask
 Flask>=3.0.0
 Flask-CORS>=4.0.0
 Werkzeug>=3.0.0
-gunicorn>=21.2.0
 
-# GUI (Tkinter is usually included with Python)
-# If tkinter is missing, install python-tk package via system package manager
+# Deep Learning Backends
+torch>=2.0.0
+torchvision>=0.15.0
 
-# ============================================
-# Optional: For better performance
-# ============================================
-# If you have NVIDIA GPU with CUDA:
-# 1. Install CUDA Toolkit from NVIDIA
-# 2. Install PyTorch with CUDA support:
-#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-#
-# Then set USE_GPU = True in config.py
-# ============================================
-
-# ============================================
-# Custom License Plate Detection Model (Optional)
-# ============================================
-# For better accuracy, download a license plate specific YOLOv8 model:
-# https://github.com/MuhammadMoinFaisal/YOLOv8-License-Plate-Detection
-#
-# Or train your own on Roboflow/custom dataset
-# ============================================
+# Additional Dependencies
+scipy>=1.10.0
