@@ -1,0 +1,26 @@
+services:
+  vehicle-detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vehicle-detection
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./data:/app/data
+      - ./static/uploads:/app/static/uploads
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped
+    networks:
+      - shared-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:6000/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  shared-network:
+    external: true
