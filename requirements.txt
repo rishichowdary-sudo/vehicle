@@ -39,6 +39,7 @@ scikit-image>=0.21.0
 Flask>=3.0.0
 Flask-CORS>=4.0.0
 Werkzeug>=3.0.0
+gunicorn>=21.2.0
 
 # GUI (Tkinter is usually included with Python)
 # If tkinter is missing, install python-tk package via system package manager
