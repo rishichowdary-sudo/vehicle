@@ -58,69 +58,133 @@ class PlateOCR:
             if not results or results[0] is None:
                 return {'text': '', 'confidence': 0.0, 'raw_results': []}
 
-            # Extract text and confidence
-            detected_texts = []
-            confidences = []
+            # Extract text with bounding box info for smart filtering
+            text_blocks = []  # List of (text, score, area, y_pos, x_pos)
 
-            # Robust parsing for various PaddleOCR result structures
-            
-            def extract_text_score(data):
+            def extract_with_boxes(data):
+                """Extract text, scores, bounding box areas and positions from OCR results."""
                 if isinstance(data, dict):
-                    # Check for 'rec_texts' and 'rec_scores' keys (Newer PaddleX format?)
                     if 'rec_texts' in data and 'rec_scores' in data:
-                        texts = data['rec_texts']
-                        scores = data['rec_scores']
-                        if isinstance(texts, list) and isinstance(scores, list):
-                            for t, s in zip(texts, scores):
-                                detected_texts.append(t)
-                                confidences.append(s)
+                        texts = data.get('rec_texts', [])
+                        scores = data.get('rec_scores', [])
+                        polys = data.get('rec_polys', [])
+
+                        for i, (t, s) in enumerate(zip(texts, scores)):
+                            area = 0
+                            y_pos = i * 100  # Default position based on order
+                            x_pos = 0
+                            if i < len(polys) and len(polys[i]) > 0:
+                                try:
+                                    poly = polys[i]
+                                    if hasattr(poly, 'shape'):
+                                        xs = poly[:, 0]
+                                        ys = poly[:, 1]
+                                        area = (max(xs) - min(xs)) * (max(ys) - min(ys))
+                                        y_pos = min(ys)  # Top of bounding box
+                                        x_pos = min(xs)  # Left of bounding box
+                                except:
+                                    area = len(t) * 100
+                            else:
+                                area = len(t) * 100
+                            text_blocks.append((t, s, area, y_pos, x_pos))
                     else:
-                        # Recurse into values
                         for val in data.values():
-                            extract_text_score(val)
-                            
+                            extract_with_boxes(val)
                 elif isinstance(data, (list, tuple)):
-                    # Check if it's a [text, score] pair
                     if len(data) == 2 and isinstance(data[0], str) and isinstance(data[1], (float, int)):
-                         detected_texts.append(data[0])
-                         confidences.append(data[1])
+                        text_blocks.append((data[0], data[1], len(data[0]) * 100, 0, 0))
                     else:
                         for item in data:
-                            extract_text_score(item)
-            
-            extract_text_score(results)
-            
-            if not detected_texts:
+                            extract_with_boxes(item)
+
+            extract_with_boxes(results)
+
+            if not text_blocks:
                 return {'text': '', 'confidence': 0.0, 'raw_results': results}
 
-            # Combine text (plates might be multi-line or split)
-            # Filter out low-confidence detections (noise removal)
-            final_texts = []
-            final_scores = []
-            
-            for t, s in zip(detected_texts, confidences):
-                if s > 0.60:  # Minimum confidence threshold for character chunks
-                    final_texts.append(t)
-                    final_scores.append(s)
-            
-            if not final_texts:
-                 # If everything was low confidence, fall back to the highest one (unsafe but better than empty)
-                 if detected_texts:
-                     max_idx = confidences.index(max(confidences))
-                     final_texts.append(detected_texts[max_idx])
-                     final_scores.append(confidences[max_idx])
-            
-            # Sort text blocks: Heuristic - State code (Letters) usually comes first
-            # If we have multiple blocks, try to put the one starting with letters first
-            if len(final_texts) > 1:
-                # Check if the first block starts with digits and second with letters
-                if final_texts[0][0].isdigit() and final_texts[1][0].isalpha():
-                     # Swap
-                     final_texts[0], final_texts[1] = final_texts[1], final_texts[0]
-                     final_scores[0], final_scores[1] = final_scores[1], final_scores[0]
-            
-            text = " ".join(final_texts)
-            confidence = sum(final_scores) / len(final_scores) if final_scores else 0.0
+            # Filter and find the best plate number
+            import re
+
+            # Indian state codes
+            states = {'AN','AP','AR','AS','BR','CG','CH','DD','DL','GA','GJ','HP','HR',
+                     'JH','JK','KA','KL','LA','LD','MH','ML','MN','MP','MZ','NL','OD',
+                     'PB','PY','RJ','SK','TN','TR','TS','UK','UP','WB'}
+
+            def is_valid_plate(text):
+                """Check if text matches Indian plate pattern."""
+                clean = re.sub(r'[^A-Z0-9]', '', text.upper())
+                if len(clean) < 8 or len(clean) > 12:
+                    return False
+                # Must start with valid state code
+                if clean[:2] not in states:
+                    return False
+                # Must have digits after state code
+                if not clean[2:4].replace('O','0').replace('D','0').isdigit():
+                    return False
+                return True
+
+            # Debug: show positions
+            print(f"DEBUG: Raw blocks with positions: {[(t, y, x) for t, s, a, y, x in text_blocks]}")
+
+            # Sort by Y position (top to bottom), then X (left to right)
+            # Group by similar Y values (same line) first
+            if text_blocks:
+                # Sort by Y first
+                text_blocks.sort(key=lambda x: x[3])
+
+                # Group blocks on same line (Y within 50 pixels)
+                lines = []
+                current_line = [text_blocks[0]]
+                for block in text_blocks[1:]:
+                    if abs(block[3] - current_line[0][3]) < 50:
+                        current_line.append(block)
+                    else:
+                        lines.append(current_line)
+                        current_line = [block]
+                lines.append(current_line)
+
+                # Sort each line by X (left to right)
+                sorted_blocks = []
+                for line in lines:
+                    line.sort(key=lambda x: x[4])
+                    sorted_blocks.extend(line)
+                text_blocks = sorted_blocks
+
+            # Combine all blocks in reading order
+            all_texts = [re.sub(r'[^A-Z0-9]', '', t.upper()) for t, s, a, y, x in text_blocks]
+            all_scores = [s for t, s, a, y, x in text_blocks]
+
+            combined = ''.join(all_texts)
+            avg_score = sum(all_scores) / len(all_scores) if all_scores else 0
+
+            print(f"DEBUG: Sorted blocks: {all_texts} -> {combined}")
+
+            best_plate = None
+            best_score = 0
+
+            # Check if combined text is valid plate
+            if is_valid_plate(combined):
+                best_plate = combined
+                best_score = avg_score
+            else:
+                # Try each single block
+                for text, score in zip(all_texts, all_scores):
+                    if is_valid_plate(text):
+                        best_plate = text
+                        best_score = score
+                        break
+
+            # Fallback: use largest text block
+            if not best_plate:
+                for text, score, area in text_blocks:
+                    clean = re.sub(r'[^A-Z0-9]', '', text.upper())
+                    if len(clean) >= 6:
+                        best_plate = clean
+                        best_score = score
+                        break
+
+            text = best_plate or ''
+            confidence = best_score
 
             # Minimal cleaning: remove non-alphanumeric (but keep the raw read mostly)
             cleaned_text = self.clean_plate_text(text)
@@ -137,56 +201,9 @@ class PlateOCR:
 
     def clean_plate_text(self, text):
         """Basic cleaning of plate text."""
-        # Convert to uppercase
-        text = text.upper()
-        # Remove special characters but keep letters and numbers
-        # This isn't a "safety net" logic (pattern matching), just standard string cleanup
         import re
+        text = text.upper()
         text = re.sub(r'[^A-Z0-9]', '', text)
-
-        # Fix invalid state codes common in OCR errors
-        # MA is not a valid state code, but KA (Karnataka) is. MH (Maharashtra) is.
-        # Given user feedback, MA -> KA is a likely correction.
-        if text.startswith('MA'):
-            text = 'KA' + text[2:]
-
-        # Smart heuristic for Indian Plates (LL DD LL DDDD)
-        # Fix common OCR confusion (O -> 0, Q -> 0, Z -> 2, etc.) in expected digit positions
-        
-        if len(text) >= 4:
-            # Convert string to list for mutability
-            chars = list(text)
-
-            # Heuristic 1: 3rd and 4th characters are usually digits (District Code)
-            # Example: MP O4 -> MP 04
-            if chars[0].isalpha() and chars[1].isalpha():
-                for i in [2, 3]:
-                    if i < len(chars):
-                        if chars[i] in ['O', 'Q', 'D']:
-                            chars[i] = '0'
-                        elif chars[i] == 'Z':
-                            chars[i] = '2'
-                        elif chars[i] == 'S':
-                            chars[i] = '5'
-                        elif chars[i] == 'B':
-                            chars[i] = '8'
-
-            # Heuristic 2: Last 4 characters are usually digits
-            # Example: ... CC Z688 -> ... CC 2688
-            if len(chars) > 4:
-                suffix_start = max(4, len(chars) - 4)
-                for i in range(suffix_start, len(chars)):
-                    if chars[i] in ['O', 'Q', 'D']:
-                        chars[i] = '0'
-                    elif chars[i] == 'Z':
-                        chars[i] = '2'
-                    elif chars[i] == 'S':
-                        chars[i] = '5'
-                    elif chars[i] == 'B':
-                        chars[i] = '8'
-            
-            text = "".join(chars)
-
         return text
 
     def read_multiple_plates(self, plate_images):
