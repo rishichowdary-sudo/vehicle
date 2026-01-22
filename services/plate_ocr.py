@@ -70,29 +70,31 @@ class PlateOCR:
                         polys = data.get('rec_polys', [])
 
                         for i, (t, s) in enumerate(zip(texts, scores)):
-                            area = 0
-                            y_pos = i * 100  # Default position based on order
-                            x_pos = 0
+                            height = 0
                             if i < len(polys) and len(polys[i]) > 0:
                                 try:
                                     poly = polys[i]
                                     if hasattr(poly, 'shape'):
                                         xs = poly[:, 0]
                                         ys = poly[:, 1]
-                                        area = (max(xs) - min(xs)) * (max(ys) - min(ys))
+                                        width = max(xs) - min(xs)
+                                        height = max(ys) - min(ys)
+                                        area = width * height
                                         y_pos = min(ys)  # Top of bounding box
                                         x_pos = min(xs)  # Left of bounding box
                                 except:
                                     area = len(t) * 100
+                                    height = 30 # Default fallback
                             else:
                                 area = len(t) * 100
-                            text_blocks.append((t, s, area, y_pos, x_pos))
+                                height = 30
+                            text_blocks.append((t, s, area, y_pos, x_pos, height))
                     else:
                         for val in data.values():
                             extract_with_boxes(val)
                 elif isinstance(data, (list, tuple)):
                     if len(data) == 2 and isinstance(data[0], str) and isinstance(data[1], (float, int)):
-                        text_blocks.append((data[0], data[1], len(data[0]) * 100, 0, 0))
+                        text_blocks.append((data[0], data[1], len(data[0]) * 100, 0, 0, 30))
                     else:
                         for item in data:
                             extract_with_boxes(item)
@@ -124,19 +126,25 @@ class PlateOCR:
                 return True
 
             # Debug: show positions
-            print(f"DEBUG: Raw blocks with positions: {[(t, y, x) for t, s, a, y, x in text_blocks]}")
+            print(f"DEBUG: Raw blocks with positions: {[(t, y, x) for t, s, a, y, x, h in text_blocks]}")
 
             # Sort by Y position (top to bottom), then X (left to right)
             # Group by similar Y values (same line) first
             if text_blocks:
+                # Calculate dynamic threshold based on average text height
+                heights = [b[5] for b in text_blocks if b[5] > 0]
+                avg_height = sum(heights) / len(heights) if heights else 30
+                line_threshold = avg_height * 0.7  # 70% of character height logic
+                print(f"DEBUG: Line threshold: {line_threshold:.2f} (Avg Height: {avg_height:.2f})")
+
                 # Sort by Y first
                 text_blocks.sort(key=lambda x: x[3])
 
-                # Group blocks on same line (Y within 50 pixels)
+                # Group blocks on same line
                 lines = []
                 current_line = [text_blocks[0]]
                 for block in text_blocks[1:]:
-                    if abs(block[3] - current_line[0][3]) < 50:
+                    if abs(block[3] - current_line[0][3]) < line_threshold:
                         current_line.append(block)
                     else:
                         lines.append(current_line)
@@ -151,8 +159,8 @@ class PlateOCR:
                 text_blocks = sorted_blocks
 
             # Combine all blocks in reading order
-            all_texts = [re.sub(r'[^A-Z0-9]', '', t.upper()) for t, s, a, y, x in text_blocks]
-            all_scores = [s for t, s, a, y, x in text_blocks]
+            all_texts = [re.sub(r'[^A-Z0-9]', '', t.upper()) for t, s, a, y, x, h in text_blocks]
+            all_scores = [s for t, s, a, y, x, h in text_blocks]
 
             combined = ''.join(all_texts)
             avg_score = sum(all_scores) / len(all_scores) if all_scores else 0
@@ -176,7 +184,11 @@ class PlateOCR:
 
             # Fallback: use largest text block
             if not best_plate:
-                for text, score, area in text_blocks:
+                for block in text_blocks:
+                    # Robust unpacking by index
+                    text = block[0]
+                    score = block[1]
+                    # area = block[2]
                     clean = re.sub(r'[^A-Z0-9]', '', text.upper())
                     if len(clean) >= 6:
                         best_plate = clean
